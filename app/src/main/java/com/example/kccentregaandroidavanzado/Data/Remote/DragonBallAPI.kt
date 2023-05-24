@@ -1,5 +1,7 @@
 package com.example.kccentregaandroidavanzado.Data.Remote
 
+import com.example.kccentregaandroidavanzado.Data.Remote.Request.FavouriteHeroRequestBody
+import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHeroLocationRequestBody
 import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHerosRequestBody
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHeroLocationResponse
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHerosResponse
@@ -18,8 +20,8 @@ interface DragonBallAPI {
 
 
     @POST("api/data/herolike")
-    suspend fun favouriteHero()
+    suspend fun favouriteHero(@Body favouriteHeroRequestBody: FavouriteHeroRequestBody)
 
     @POST("api/heros/locations")
-    suspend fun getHeroLocations(): List<GetHeroLocationResponse>
+    suspend fun getHeroLocations(getHeroLocationRequestBody: GetHeroLocationRequestBody): List<GetHeroLocationResponse>
 }
