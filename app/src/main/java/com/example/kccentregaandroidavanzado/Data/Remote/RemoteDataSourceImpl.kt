@@ -8,7 +8,7 @@ import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHerosRespon
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.LoginResponse
 import javax.inject.Inject
 
-class RemoteDataSourceImpl @Inject constructor(private val api: DragonBallAPI): RemoteDataSource {
+class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, private val loginAPI: ILoginAPI): RemoteDataSource {
 
     var heroID = "Algo que no se aun"
 
@@ -16,8 +16,8 @@ class RemoteDataSourceImpl @Inject constructor(private val api: DragonBallAPI): 
         return api.getHeroes(GetHerosRequestBody())
     }
 
-    override suspend fun login(): LoginResponse {
-        return api.login()
+    override suspend fun login(credentials: String): LoginResponse {
+        return loginAPI.login(credentials)
     }
 
     override suspend fun favouriteHero() {

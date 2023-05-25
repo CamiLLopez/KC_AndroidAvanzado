@@ -6,7 +6,4 @@ interface Repository {
 
     suspend fun getHeros(): List<SuperHero>
 
-
-    suspend fun login(): String
-
 }

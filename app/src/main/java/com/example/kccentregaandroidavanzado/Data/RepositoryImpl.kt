@@ -12,8 +12,4 @@ class RepositoryImpl(
     override suspend fun getHeros(): List<SuperHero> {
         TODO("Not yet implemented")
     }
-
-    override suspend fun login(): String {
-        TODO("Not yet implemented")
-    }
 }

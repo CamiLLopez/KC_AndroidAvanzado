@@ -10,13 +10,10 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 
-interface DragonBallAPI {
+interface IDragonBallAPI {
 
     @POST("api/heros/all")
     suspend fun getHeroes(@Body getHerosRequestBody: GetHerosRequestBody ): List<GetHerosResponse>
-
-    @POST("api/auth/login")
-    suspend fun login(): LoginResponse
 
 
     @POST("api/data/herolike")
