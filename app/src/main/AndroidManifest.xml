@@ -24,6 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UI.HerosListViewActivity">
+
+        </activity>
+        <activity
+            android:name=".UI.HerosListFragment"
+            android:id="@+id/heros_list"
+            />
+
     </application>
 
 </manifest>

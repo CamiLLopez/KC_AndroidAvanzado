@@ -33,7 +33,6 @@ class LoginViewModel @Inject constructor(private val repository : RepositoryLogi
               repository.login("Basic $cleanedString")
           }
           result.let {
-              val token = result
               _loginResult.postValue(result != null)
           }
         }

@@ -7,13 +7,15 @@ import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHeroLocatio
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHerosResponse
 import retrofit2.Response
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, private val loginAPI: ILoginAPI): RemoteDataSource {
 
-    var heroID = "Algo que no se aun"
-
+    var heroID = "Algo q ue no se aun"
+    private var token = "Bearer eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJpZGVudGlmeSI6IjFFQzk5RDAzLTRDMTMtNEZFNS1CMERBLUJCQjQxRkFFMzdERiIsImVtYWlsIjoiY2FtaWxhbGxvcGV6OTVAZ21haWwuY29tIiwiZXhwaXJhdGlvbiI6NjQwOTIyMTEyMDB9.mCt5VQOCzuB4cdv8sm_RDmEGoINTeS3tCZlZ2l2pLYY"
     override suspend fun getHeros(): List<GetHerosResponse> {
-        return api.getHeroes(GetHerosRequestBody())
+        return api.getHeroes(token, GetHerosRequestBody())
     }
 
     override suspend fun login(credentials: String): Response<String> {

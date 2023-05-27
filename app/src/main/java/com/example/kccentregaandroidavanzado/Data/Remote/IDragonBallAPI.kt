@@ -6,13 +6,14 @@ import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHerosRequest
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHeroLocationResponse
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHerosResponse
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 
 interface IDragonBallAPI {
 
     @POST("api/heros/all")
-    suspend fun getHeroes(@Body getHerosRequestBody: GetHerosRequestBody ): List<GetHerosResponse>
+    suspend fun getHeroes(@Header("Authorization") token: String, @Body getHerosRequestBody: GetHerosRequestBody ): List<GetHerosResponse>
 
 
     @POST("api/data/herolike")

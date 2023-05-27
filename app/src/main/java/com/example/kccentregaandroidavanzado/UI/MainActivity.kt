@@ -1,8 +1,8 @@
 package com.example.kccentregaandroidavanzado.UI
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
@@ -12,7 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: LoginViewModel by viewModels()
@@ -44,11 +43,13 @@ class MainActivity : AppCompatActivity() {
 
              viewModel.loginResult.observe(this) { success ->
 
-                 Log.d("TAG 1", success.toString())
                  if (!success){
                      Toast.makeText(this, "Login failed, try again", Toast.LENGTH_LONG).show()
-                 }
+                 }else{
+                     val intent = Intent(this, HerosListViewActivity::class.java)
+                     startActivity(intent)
 
+                 }
              }
 
         }

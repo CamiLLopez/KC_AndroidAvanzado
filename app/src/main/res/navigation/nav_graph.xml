@@ -2,13 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/herosListFragment">
 
     <fragment
         android:id="@+id/herosListFragment"
         android:name="com.example.kccentregaandroidavanzado.UI.HerosListFragment"
-        android:label="fragment_heros_list"
+        android:label="Heros List"
         tools:layout="@layout/fragment_heros_list" >
         <action
             android:id="@+id/action_herosListFragment_to_heroDetailFragment"
@@ -19,8 +19,13 @@
         android:name="com.example.kccentregaandroidavanzado.UI.HeroDetailFragment"
         android:label="fragment_hero_detail"
         tools:layout="@layout/fragment_hero_detail" >
-        <action
-            android:id="@+id/action_heroDetailFragment_to_herosListFragment"
-            app:destination="@id/herosListFragment" />
+
+        <argument
+            android:name="hero_id"
+            app:argType="string"
+            app:nullable="false"
+            />
+
     </fragment>
+
 </navigation>
