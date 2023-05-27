@@ -2,6 +2,8 @@ package com.example.kccentregaandroidavanzado.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.example.kccentregaandroidavanzado.UI.viewModels.LoginViewModel
@@ -39,6 +41,15 @@ class MainActivity : AppCompatActivity() {
             val password = binding.passwordField.text.toString()
 
              viewModel.login(email, password)
+
+             viewModel.loginResult.observe(this) { success ->
+
+                 Log.d("TAG 1", success.toString())
+                 if (!success){
+                     Toast.makeText(this, "Login failed, try again", Toast.LENGTH_LONG).show()
+                 }
+
+             }
 
         }
     }

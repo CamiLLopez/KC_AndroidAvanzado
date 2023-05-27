@@ -5,7 +5,7 @@ import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHeroLocation
 import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHerosRequestBody
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHeroLocationResponse
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHerosResponse
-import com.example.kccentregaandroidavanzado.Data.Remote.Response.LoginResponse
+import retrofit2.Response
 import javax.inject.Inject
 
 class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, private val loginAPI: ILoginAPI): RemoteDataSource {
@@ -16,7 +16,7 @@ class RemoteDataSourceImpl @Inject constructor(private val api: IDragonBallAPI, 
         return api.getHeroes(GetHerosRequestBody())
     }
 
-    override suspend fun login(credentials: String): LoginResponse {
+    override suspend fun login(credentials: String): Response<String> {
         return loginAPI.login(credentials)
     }
 

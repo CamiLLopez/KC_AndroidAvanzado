@@ -5,7 +5,6 @@ import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHeroLocation
 import com.example.kccentregaandroidavanzado.Data.Remote.Request.GetHerosRequestBody
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHeroLocationResponse
 import com.example.kccentregaandroidavanzado.Data.Remote.Response.GetHerosResponse
-import com.example.kccentregaandroidavanzado.Data.Remote.Response.LoginResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

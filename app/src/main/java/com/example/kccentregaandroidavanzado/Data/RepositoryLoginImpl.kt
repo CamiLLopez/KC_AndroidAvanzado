@@ -10,9 +10,12 @@ class RepositoryLoginImpl @Inject constructor(
     override suspend fun login(credentials: String): String? {
         val response = remoteDataSource.login(credentials)
 
-        response?.let {
-            return it.toString()
-        }
-        return null
+       if( response.isSuccessful){
+           return response.body()
+
+       }else{
+           return null
+       }
+
     }
 }

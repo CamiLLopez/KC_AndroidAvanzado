@@ -3,6 +3,8 @@ package com.example.kccentregaandroidavanzado.UI.viewModels
 
 import android.util.Base64
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kccentregaandroidavanzado.Data.RepositoryLogin
@@ -15,6 +17,10 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val repository : RepositoryLogin): ViewModel() {
 
+    private val _loginResult = MutableLiveData<Boolean>()
+    val loginResult: LiveData<Boolean>
+        get() = _loginResult
+
 
     fun login(user: String, password: String){
 
@@ -24,15 +30,12 @@ class LoginViewModel @Inject constructor(private val repository : RepositoryLogi
 
         viewModelScope.launch {
           val result = withContext(Dispatchers.IO){
-              repository.login(cleanedString)
+              repository.login("Basic $cleanedString")
           }
-
-            Log.d("TAG", "Termine el proceso de login")
+          result.let {
+              val token = result
+              _loginResult.postValue(result != null)
+          }
         }
-
-
     }
-
-
-
 }
